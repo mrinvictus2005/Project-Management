@@ -16,11 +16,11 @@ const PORT = process.env.PORT || 5000
 const app = express()
 
 app.use(
-    cors({
-        origin: "*",
-        methods: ["GET", "POST", "DELETE", "PUT"],
-        credentials: true,
-    })
+  cors({
+    origin: "https://project-management-production-374c.up.railway.app",
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    credentials: true,
+  })
 )
 
 app.use(express.json())

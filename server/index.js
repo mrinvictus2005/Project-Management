@@ -17,7 +17,9 @@ const app = express()
 
 app.use(
   cors({
-    origin: "https://project-management-production-374c.up.railway.app",
+    origin: [
+      "https://project-management-production-374c.up.railway.app"
+    ],
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })

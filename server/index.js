@@ -12,35 +12,26 @@ dotenv.config()
 
 const app = express()
 
-// Database connection
 dbConnection()
 
-// Body parsers
+const corsOptions = {
+    origin: "https://project-management-production-374c.up.railway.app",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}
+
+app.use(cors(corsOptions))
+app.options("*", cors(corsOptions))
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
-// Cookie parser
 app.use(cookieParser())
 
-// CORS
-app.use(
-    cors({
-        origin: [
-            "https://project-management-production-374c.up.railway.app",
-        ],
-        credentials: true,
-        methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
-)
-
-// Logger
 app.use(morgan("dev"))
 
-// Routes
 app.use("/api", routes)
 
-// Error handlers
 app.use(routeNotFound)
 app.use(errorHandler)
 

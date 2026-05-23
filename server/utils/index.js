@@ -17,9 +17,10 @@ export const createJWT = (res, userId) => {
     })
 
     res.cookie("token", token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
-        maxAge: 1 * 24 * 60 * 60 * 1000,
-    })
-}
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/",
+    domain: ".up.railway.app",
+    maxAge: 1 * 24 * 60 * 60 * 1000,
+})
